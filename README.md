@@ -1,8 +1,8 @@
-::: {align="center"}
+<div align="center">
 # Hi, I'm Om Jangam 👋
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="100%" alt="Animated coding banner">
+  <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="350" alt="Animated coding banner">
 </div>
 
 <br/>
@@ -17,8 +17,7 @@ through hands-on development.
 [![GitHub](https://img.shields.io/badge/GitHub-OmJangam1513-181717?style=flat&logo=github)](https://github.com/OmJangam1513)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/om-jangam-75636735b)
 [![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat&logo=gmail&logoColor=white)](mailto:omjangam1513@gmail.com)
-:::
-
+</div>
 ------------------------------------------------------------------------
 
 ## 👨‍💻 About Me
@@ -125,14 +124,13 @@ publish, update, and manage event announcements through CRUD operations.
 
 ## 📈 GitHub Activity
 
-::: {align="center"}
+<div align="center">
 ![GitHub
 Stats](https://github-readme-stats.vercel.app/api?username=OmJangam1513&show_icons=true&hide_border=true&rank_icon=github)
 
 ![Top
 Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=OmJangam1513&layout=compact&hide_border=true)
-:::
-
+</div>
 *Stats are provided by a third-party service and may occasionally be
 unavailable.*
 
