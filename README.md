@@ -1,4 +1,3 @@
-<div align="center">
 # Hi, I'm Om Jangam 👋
 
 <div align="center">
@@ -17,7 +16,6 @@ through hands-on development.
 [![GitHub](https://img.shields.io/badge/GitHub-OmJangam1513-181717?style=flat&logo=github)](https://github.com/OmJangam1513)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://linkedin.com/in/om-jangam-75636735b)
 [![Email](https://img.shields.io/badge/Email-Contact-D14836?style=flat&logo=gmail&logoColor=white)](mailto:omjangam1513@gmail.com)
-</div>
 ------------------------------------------------------------------------
 
 ## 👨‍💻 About Me
