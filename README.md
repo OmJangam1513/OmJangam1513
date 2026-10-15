@@ -78,20 +78,20 @@ Built an end-to-end ETL pipeline to consolidate data from an acquired
 company using the **Medallion Architecture** (Bronze, Silver, and Gold
 layers).
 
-### [Loan Document Processing](https://github.com/OmJangam1513/Loan-processin-ai)
+### [Loan Document Processing]
 
 A document-processing project concept for organizing loan documents,
 extracting structured information, and supporting financial eligibility
 and risk-review workflows.
 
-### [Blood Work Analyzer --- GenAI Workflow](https://github.com/OmJangam1513/Blood_Work_GenAI_Workflow)
+### [Blood Work Analyzer --- GenAI Workflow]
 
 A Streamlit-based project exploring an AI-assisted workflow for
 interpreting blood-work information. Built as a practical learning
 project around LLM integration and retrieval-oriented application
 development.
 
-### [ChainSight --- Software Supply Chain Risk Analyzer](https://github.com/OmJangam1513/Coders_MindSpark26)
+### [ChainSight --- Software Supply Chain Risk Analyzer]
 
 A project focused on analyzing software dependency risks, representing
 dependencies as a graph, and helping surface vulnerabilities and
