@@ -1,6 +1,12 @@
 ::: {align="center"}
 # Hi, I'm Om Jangam 👋
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/74038190/225813708-98b745f2-7d22-48cf-9150-083f1b00d6c9.gif" width="100%" alt="Animated coding banner">
+</div>
+
+<br/>
+
 ### Computer Engineering Student \| AI/ML • Generative AI • Data Engineering
 
 I build software projects that combine programming, data, and
@@ -29,6 +35,15 @@ through hands-on development.
     and project-building skills.
 -   🤝 Open to learning opportunities, technical collaboration,
     internships, and entry-level roles.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/arnav7777/arnav7777/output/github-snake-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/arnav7777/arnav7777/output/github-snake-light.svg">
+  <img alt="GitHub contribution snake" src="https://raw.githubusercontent.com/arnav7777/arnav7777/output/github-snake-light.svg">
+</picture>
+
+<br/>
+
 
 ## 🛠️ Technologies & Tools
 
