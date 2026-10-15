@@ -67,6 +67,23 @@ S3](https://img.shields.io/badge/Amazon_S3-569A31?style=flat&logo=amazons3&logoC
 
 ## 🚀 Selected Projects
 
+### Deep Learning-Based Object Detection & Tracking
+
+Developed a CNN-based academic project applying computer vision
+techniques to image-based object identification and tracking.
+
+### ETL Pipeline with Databricks, Apache Spark & Amazon S3
+
+Built an end-to-end ETL pipeline to consolidate data from an acquired
+company using the **Medallion Architecture** (Bronze, Silver, and Gold
+layers).
+
+### [Loan Document Processing](https://github.com/OmJangam1513/Loan-processin-ai)
+
+A document-processing project concept for organizing loan documents,
+extracting structured information, and supporting financial eligibility
+and risk-review workflows.
+
 ### [Blood Work Analyzer --- GenAI Workflow](https://github.com/OmJangam1513/Blood_Work_GenAI_Workflow)
 
 A Streamlit-based project exploring an AI-assisted workflow for
@@ -79,23 +96,6 @@ development.
 A project focused on analyzing software dependency risks, representing
 dependencies as a graph, and helping surface vulnerabilities and
 potential attack paths.
-
-### [Loan Document Processing](https://github.com/OmJangam1513/Loan-processin-ai)
-
-A document-processing project concept for organizing loan documents,
-extracting structured information, and supporting financial eligibility
-and risk-review workflows.
-
-### Deep Learning-Based Object Detection & Tracking
-
-Developed a CNN-based academic project applying computer vision
-techniques to image-based object identification and tracking.
-
-### ETL Pipeline with Databricks, Apache Spark & Amazon S3
-
-Built an end-to-end ETL pipeline to consolidate data from an acquired
-company using the **Medallion Architecture** (Bronze, Silver, and Gold
-layers).
 
 ### Event Discovery & Management Platform
 
