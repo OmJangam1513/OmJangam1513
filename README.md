@@ -123,14 +123,12 @@ publish, update, and manage event announcements through CRUD operations.
 ## 📈 GitHub Activity
 
 <div align="center">
-![GitHub
-Stats](https://github-readme-stats.vercel.app/api?username=OmJangam1513&show_icons=true&hide_border=true&rank_icon=github)
 
-![Top
-Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=OmJangam1513&layout=compact&hide_border=true)
+<img src="https://github-readme-stats.vercel.app/api?username=OmJangam1513&show_icons=true&hide_border=true&rank_icon=github" alt="GitHub Stats" />
+
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=OmJangam1513&layout=compact&hide_border=true" alt="Top Languages" />
+
 </div>
-*Stats are provided by a third-party service and may occasionally be
-unavailable.*
 
 ## 📫 Connect With Me
 
