@@ -1,0 +1,212 @@
+#Assignment 3(Bank Smart Contract)
+
+// SPDX-License-Identifier: Unlicensed
+
+pragma solidity ^0.8.0;
+
+contract MyBank 
+{
+	mapping(address => uint256) private _balances;
+	
+	address public owner;
+
+	event Deposit(address indexed account, uint256 amount);
+	event Withdrawal(address indexed account, unint256 amount);
+
+	constructor() payable
+	{
+		owner = msg.sender;
+		
+		if(msg.value > 0)
+		{
+		
+			_balance[msg.sender] = msg.value;
+
+			emit Deposit(msg.sender, msg.value);
+
+		}
+		
+	}
+
+	function deposit() public payable 
+	{
+
+		require(msg.value > 0, "Enter an amount to deposit");
+	
+		_balance[msg.sender] += msg.value;
+
+		emit Deposit(msg.sender, msg.value):
+		
+	}
+
+	function withdraw(uint256 amount) public
+	{
+		require(amount > 0, "Amount must be greater than 0");
+
+		require(_balance[msg.sender] >= amount, "Insufficient User Balance");	
+
+		require( address(this).balance >= amount, "Bank does not have enough ETH");
+
+		_balance[msg.sender] -= amount;
+
+		(bool success, ) = payable(msg.sender).call{value: amount}("");
+		
+		require(success, "Transfer failed");
+		
+		emit Withdrawal(msg.sender, amount);
+    	}
+
+
+	function viewBalance() public view returns (uint256) 
+	{
+        	return _balances[msg.sender];
+    	}
+
+	function bankBalance() public view returns (uint256) 
+	{
+        	return address(this).balance;
+    	}
+
+
+}
+
+
+#Assignment 4(Student Smart Contract)
+
+// SPDX-License-Identifier: UNLICENSED
+
+pragma solidity ^0.8.20;
+
+
+contract StudentData {
+
+
+	struct Student 
+	{
+		uint256 rollNo;
+        	string name;
+        	uint256 age;
+        	string course;
+	}
+
+	Student[] public students;	
+
+	function addStudent(uint256 _rollNo, string memory _name, uint256 _age, string memory _course) public 
+	{
+		students.push(Student(_rollNo, _name, _age, _course));
+		
+	}	
+	
+		
+	function getStudentCount() public view returns (uint256) 
+	{
+
+        	return students.length;
+
+	}
+
+
+
+	function getStudent(uint256 _index) public view returns (uint256 rollNo, string memory name, uint256 age, string memory course)
+    	{
+        	Student memory s = students[_index];
+
+        	return (s.rollNo, s.name, s.age, s.course);
+    	}
+
+    // Fallback function
+	fallback() external payable 
+	{
+        	// Executes when no matching function is found
+    	}
+
+    // Receive Ether
+    	receive() external payable 
+	{
+        	// Executes when Ether is sent without data
+    	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

@@ -1,0 +1,514 @@
+#1 Assignments
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import r2_score, mean_squared_error
+
+df = pd.read_csv()
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+
+df.dtypes
+
+df = pd.to_datetime(df['DateTime_Col'])
+
+df = df['DateTime'].astype('int64')
+
+df.columns
+
+df.shape
+
+df.isnull()
+
+df.isnull().sum()
+
+df.isnull().sum().sum()
+
+df.dropna(inplace=True)
+
+df.drop_duplicates(inplace=True)
+
+df = df.drop(columns=["Unnamed: 0", "key"], errors = "ignore")
+
+df= df[df['passenger_count']>0]
+
+df = df[df["fare_amount"]>0]
+
+df.corr(numeric_only=true)
+
+x = df.drop[columns=(), error = 'ignore']
+
+df = df[df["fare_amount"]>0]
+
+plt.boxplot(df['fare_amount'])
+
+Q1 = df['fare_amount'].quantile(0.25)
+
+Q3 = df['fare_amount'].quantile(0.75)
+
+IQR = Q3 - Q1
+
+lower_limit = Q1 - 1.5*IQR
+
+upper_limit = Q3 + 1.5*IQR
+
+df = df[df['fareamount']>lower_limit and df['fare_amount']< upper_limit]
+
+plt.boxplot(df['fare_amount'])
+
+plt.show()
+
+x = df.drop('fare_amount', axis = 1)
+
+y = df['fare_amount']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
+
+lr = LinearRegression()
+lr.fit(x_train, y_train)
+lr_pred = lr.predict(x_test)
+
+print("Linear Regression_R2 Score: ",r2_score(y_test, lr_pred))
+
+print("Linear Regression_MSE: ",mean_squared_error(y_test, lr_pred))
+
+lr_RMSE = np.sqrt(mean_squared_error(y_test, lr_pred))
+
+print("Linear Regression_RMSE: ",lr_RMSE)
+
+rf = RandomForestRegressor()
+rf.fit(x_train, y_train)
+rf_pred = rf.predict(x_test)
+
+print("Random Forest Regression_R2 Score: ",r2_score(y_test, rf_pred))
+
+print("Random Forest Regression_MSE: ",mean_squared_error(y_test, rf_pred))
+
+rf_RMSE = np.sqrt(mean_squared_error(y_test, rf_pred))
+
+print("Random Forest Regression_RMSE: ",rf_RMSE)
+
+
+
+# Assigment 2
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy, confusion_matrix, classification_report
+
+df = pd.read_csv()
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+
+df.dtypes
+
+df.columns
+
+df.shape
+
+df.isnull()
+
+df.isnull().sum()
+
+df.isnull().sum().sum()
+
+df.dropna(inplace = True)
+
+df.drop_duplicates(inplace = True)
+
+df = df.drop(columns = ['Email No.'], errors = 'ignore')
+
+x = df.drop(columns = ['Prediction'], axis = 1)
+
+y = df['Prediction']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
+
+scaler = StandardScaler()
+
+x_train = scaler.fit_transform()
+
+x_test = scaler.transfrom()
+
+knn = KNeighborsClassifier(n_neighbors = 5)
+knn.fit(x_train, y_train)
+knn_pred = knn.predict(x_test)
+
+print("KNN Accuracy:", accuracy_score(y_test, knn_pred))
+print("KNN Confusion Matrix: ", confusion_matrix(y_test, knn_pred))
+print("KNN Classification Report: ", classification_report(y_test, knn_pred))
+
+svm = SVC()
+svm.fit(x_train, y_train)
+svm_pred = svm.predict(y_test)
+
+print("SVM Accuracy:", accuracy_score(y_test, svm_pred))
+print("SVM Confusion Matrix: ", confusion_matrix(y_test, svm_pred))
+print("SVM Classification Report: ", classification_report(y_test, svm_pred))
+
+accuracy = [accuracy_score(y_test, knn_pred), accuracy_score(y_test, svm_pred)]
+
+plt.bar(['KNN', 'SVM'],accuracy)
+
+
+# Assigment 3
+
+import pandas as pd
+
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing  import StandardScaler
+from sklearn.metrics import accuracy, confusion_matrix, classification_report
+
+from tensorflow.keras.models import sequential
+from tensorflow.keras.layers import Input, Dense, Dropout
+
+df = pd.read_csv()
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+
+df.dtypes
+
+df.columns
+
+df.shape
+
+df.isnull()
+
+df.isnull().sum()
+
+df.isnull().sum().sum()
+
+df.dropna(inplace = True)
+
+df.drop_duplicates(inplace = True)
+
+df.drop(columns=['CustomerId','Surname'],inplace=True,errors='ignore')
+
+x = df.drop(columns =['Exited'], axis = 1)
+
+y = df['Exited']
+
+x = pd.get_dummies(x, columns = ['Gender','Geograpgy'], drop_first = True, dtypes = int)
+
+scaler = StandardScalar()
+
+x_train = scaler.fit_transform(x_train)
+
+x_test  = scaler.transform(x_test)
+
+initial_mdoel = Sequential()
+
+initial_mdoel.add(Input(shape = (x_train.shape[1],)))
+
+initial_mdoel.add(Dense(6, activation = 'relu'))
+initial_model.add(Dense(6, activation = 'relu'))
+
+initial_model.add(Dense(1, activation = 'sigmoid'))
+
+initial_model.summary()
+
+initial_model.complie(optimizer = 'adma', loss = 'binary_crossentropy', metrics = [accuracy])
+
+initial_model.fit(x_train, y_train, batch_size = 32, epochs = 200, validation_split = 0.1)
+
+y_pred_prob_initial = initial_model.predict(x_test)
+
+y_pred_initial = (y_pred_prob > 0.5).astype(int).ravel()
+
+accuracy_score(y_test,y_pred)
+
+
+improved_model = = Sequential()
+
+improved_mdoel.add(Input(shape = (x_train.shape[1],)))
+
+improved_mdoel.add(Dense(6, activation = 'relu'))
+improved_mdoel.add(Dropout(rate = 0.1))
+improved_model.add(Dense(6, activation = 'relu'))
+improved_mdoel.add(Dropout(rate = 0.1))
+
+improved_model.add(Dense(1, activation = 'sigmoid'))
+
+improved_model.summary()
+
+improved_model.complie(optimizer = 'adma', loss = 'binary_crossentropy', metrics = [accuracy])
+
+improved_model.fit(x_train, y_train, batch_size = 32, epochs = 200, validation_split = 0.1)
+
+y_pred_prob_improved = improved_model.predict(x_test)
+
+y_pred_improved = (y_pred_prob > 0.5).astype(int).ravel()
+
+accuracy_score(y_test,y_pred)
+
+cm = confusion_matrix(y_test, y_pred_improved)
+
+print("\nConfusion Matrix:")
+print(cm)
+
+print("\nClassification Report:")
+print(classification_report(y_test, y_pred_improved))
+
+
+#Assigment 4
+
+import numpy as np
+import matplotlib.pyplot as plt
+import sympy as sym
+
+def objective(x):
+	return (x+3)**2
+
+def derivative(x):
+	return 2*(x+3)
+
+x_sym = sym.symbol('x')
+
+expr = (x_sym + 3) ** 2
+
+print("Derivation:", sym.diff(expr, x_sym))
+
+
+x_old = 2
+rate = 0.1
+precision = 0.000001
+
+previous_step_size = 1
+max_iters = 1000
+iters = 0
+
+x_history = [x_old]
+
+
+while (previous_step_size > precision) and (iters < max_iters):
+	x_new = x_old + rate * derivation(x_old)
+
+	previous_step_size = abs(x_new - x_old)
+	x_histroy.append(x_new)
+	x_old = x_new
+
+	iters += 1
+
+print("Local Minimum occurs at x =", x_old)
+print("Iteration =",iters)
+	
+
+x = np.linspace(-8, 4, 100)
+
+y = (x+3)**2
+
+plt.plot(x,y)
+
+y_history = [objective(val) for val in x_history]
+plt.plot(x_history, y_history, 'o')
+
+plt.grid(True)
+plt.show()
+
+#Assigment 5
+
+import pandas as pd
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score f1_score
+
+df = pd.read_csv()
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+
+df.dtypes
+
+df.columns
+
+df.shape
+
+df.isnull()
+
+df.isnull().sum()
+
+df.isnull().sum().sum()
+
+df.dropna(inplace = True)
+
+df.drop_duplicates(inplace = True)
+
+for col in df.columns[1:-3]:
+	df[col] = df[col].replace(0,np.nan)
+	df[col] = df[col].fillna(round(df[col].mean(skipna = True)))
+
+x = df.drop(columns = ['Outcome'], axis = 1)
+
+y = df['Outcome']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size, random_state)
+
+knn = KNeighborsClassifier()
+knn.fit(x_train,y_tain)
+knn_pred = knn_fit.predict(x_test))
+
+print("Confusion Matrix")
+print(confusion_matrix(y_test, knn_pred))
+
+print("Accuracy Score:", accuracy_score(y_test, knn_pred))
+print("Precision Score:",precision_score(y_test, knn_pred))
+print("Recall Score:", recall_score(y_test, knn_pred))
+print("F1 Score:", f1_score(y_test, knn_pred))
+
+#Assignment 6
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+
+import warnings
+
+warnings.filterwarnings(
+    "ignore",
+    message = "KMeans is known to have a memory leak",
+    category=UserWarning
+)
+
+df = pd.read_csv("sales_data_sample.csv", encoding= 'latin1')
+
+df.head()
+
+df.tail()
+
+df.info()
+
+df.describe()
+
+df.dtypes
+
+df['ORDERDATE'] = pd.to_datetime(df['ORDERDATE'])
+
+df.columns
+
+df.shape
+
+df.isnull()
+
+df.isnull().sum()
+
+df.isnull().sum().sum()
+
+df.dropna(inplace = True)
+
+df.drop_duplicates(inplace = True)
+
+features = ['QUANTITYORDERED','PRICEEACH','SALES']
+
+x = df[features]
+
+scaler = StandardScaler()
+
+x_scaled = scaler.fit_transform(x)
+
+wcss = []
+
+for k in rang(1,11):
+	kmeans = KMeans(n_clusters = k, n_init =10,random_state = 42)
+
+	kmeans.fit(x_scaled)
+
+	wcss.append(kmeans.inertia_)
+
+plot.plot(range(1,11), wcss, marker = 'o')
+
+plt.title("Elbow Method")
+plt.grid(True)
+plt.show()
+
+k = 3
+
+kmeans = KMeans(n_clusters=k, n_init=10, random_state = 42)
+
+kmeans_labels = kmeans.fit_predict(x_scaled)
+
+x['KMeans_cluster'] = kmeans_labels
+
+x.head(20)
+
+plt.figure(figsize=(8, 5))
+
+sns.scatterplot(
+    data=x,
+
+    x="SALES",
+    y="QUANTITYORDERED",
+
+    hue="KMeans_cluster",
+    palette='Set1'
+)
+plt.title("K-Means Clustering of Sales Data")
+plt.show()
+
+# Compare average sales across K-Means clusters
+print("\nAverage sales by K-Means cluster:")
+print(x.groupby("KMeans_cluster")["SALES"].mean())
+
+from sklearn.cluster import KMeans, AgglomerativeClustering
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+linked = linkage(x_scaled, method="ward")
+
+plt.figure(figsize=(12, 6))
+dendrogram(linked, truncate_mode="lastp", p=30)
+plt.title("Hierarchical Clustering Dendrogram")
+plt.xlabel("Cluster / Sample")
+plt.ylabel("Distance")
+plt.show()
+
+hierarchical = AgglomerativeClustering(
+    n_clusters=k,
+    linkage="ward"
+)
+
+hierarchical_labels = hierarchical.fit_predict(x_scaled)
+x["Hierarchical_Cluster"] = hierarchical_labels
+
+print("\nFinal clustered data:")
+print(x.head(10))
+
+# Compare average sales across K-Means clusters
+print("\nAverage sales by Hierarchical cluster:")
+print(x.groupby("Hierarchical_Cluster")["SALES"].mean())
