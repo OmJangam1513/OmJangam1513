@@ -3,6 +3,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
@@ -46,6 +47,11 @@ df= df[df['passenger_count']>0]
 df = df[df["fare_amount"]>0]
 
 df.corr(numeric_only=true)
+
+sns.heatmap(df.corr(numeric_only=True),
+            annot=True,
+            cmap='coolwarm',
+            fmt='.2f')
 
 x = df.drop[columns=(), error = 'ignore']
 
