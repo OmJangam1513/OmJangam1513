@@ -199,271 +199,63 @@ for k, t, m in zip(x, execution_time, memory_usage):
 
 
 
-#Assignment 2 Again
-
-import matplotlib.pyplot as plt
-from time import perf_counter
-import tracemalloc
-import statistics
-
-import string
-import heapq
-from collections import Counter
-
-
-class Node:
-	
-	def __init__(self, char=None, freq=None, left=None, right=None):
-		self.char = char
-		self.freq = freq
-		self.left = left
-		self.right = right
-
-	def __lt__(self,other):
-		return self.freq < other.freq
-
-def huffman(text):
-	
-	frequencies = Counter(text)
-
-	if not frequencies:
-		return {} 
-
-	heap = [Node(char,freq) for char, freq in frequencies.items]
-
-	heapq.heapify(heap)
-	
-	
-	if (len(heap) == 1):
-		return {heap[0].char:"0"}
-
-	while(len(heap)>1):
-		
-		right = heapq.heappop(heap)
-		left = heapq.heappop(heap)
-
-		parent = Node(freq = left.freq + right.freq, left = left, right = right)
-		
-		heapq.heappush(heap, parent)
-	
-	codes = {}
-
-	def generate(node, code=""):
-		if node.char is not None:
-			codes[char] = node.code 
-		else:
-			generate(node.left, code+"1")
-			generate(node.)
-
-	generate(heap[0])
-
-
-	return codes
-
-
-text = "this is an expamle for huffman"
-
-huffman(text)
-
-frequencies =  Counter(text)
-
-for char, freq in frequencies.items():
-	print(f"'{char}' \t {freq} \t {code[char]}")
-
-def measure_time(function, text, repeat=3):
-	time = []
-	
-	for i in range(repeat):
-		start = perf_counter()
-		function(text)
-		end = perf_counter()
-	
-		time.append(end - start)		
-	return statistics.median(time)
-
-def measure_memory(function, text, repeat=3):
-	memory_values = []
-
-	for i in range(repeat):
-		tracemalloc.start()
-		
-		try:
-			function(text)
-			current, peak = tracemalloc.get_traced_memory()
-			
-		finally:
-			tracemalloc.stop()
-		
-		memory_usage.append(peak/1024)
-
-	return statistics.median(memory_values)
-		
-alphabets = string.ascii_letters
-
-x = list(range(2, 53))
-
-execution_time = []
-memory_usage = []
-
-for k in x:	
-	test_text = "".join(alphbets[i % k] for i in range(1000))
-	
-	execution_time.append(measure_time(huffman, test_text))
-	memory_usage.append(measure_memory(huffman, test_text))
-
-	
-
-for k, t, m in zip(x, execution_time (sec), memory_usage (KB)):
-	print(f"{k} \t {t:.8f} \t\t\t {m}")
-
-
-
-
-
-
 # Assignment 3
 
 import matplotlib.pyplot as plt
 from time import perf_counter
 import tracemalloc
-import statistics 
-
-
-import random
-
-
-def fraction_Knapsack(weights, profits, capacity):
-
-	items = list(zip(weights,profits))	
-
-	ratio = []
-	
-	for item in items.items():
-		ratio.append(item[1]/item[0])
-	
-	items = list(zip(ratio, items))
-
-	items.sort(reverse=True)
-
-	for ratio, item  in items:
-		weight = item[0]
-		profit = item[1]
-	
-
-		if capacity <= 0:
-			break
-
-
-		take = min(weight, capacity)
-		total += take * (value / weight)
-		capacity -= take
-	
-	return total_profit
-
-
-weights = [10,20,30]
-profits = [60,100,120]
-capacity = 50
-
-print("Weights:",weights)
-print("Profits:",profits)
-print("Capacity:",capacity)
-print("Maximum Profit:",fractional_knapsack(weights, profits, capacity))
-
-def measure_time (function, weights, profits, capacity, repeats=3):
-	time = []
-	
-	for i in range(repeat):
-		start = perf_counter()
-		function(weights, profits, capacity)
-		end = perf_counter()
-
-		time.append(end-start)
-
-	return statistics.median(time)
-		
-
-
-def measure_memory (function, weights, profits, capacity, repeat=3):
-	memory_values = []
-
-	for i in range(repeat):
-		tracemalloc.start()
-		
-		try:
-			function(weights, profits, capacity)
-			current, peak = tracemalloc.get_traced_memory()
-		finally:
-			tracemalloc.stop()
-	
-		memory_values.append(peak/1024)
-	statistics.median(memory_values)
-
-
-all_weights = [random.randint(1,20) for i in range(300)] 
-all_profits = [random.randint(10, 100) for i in range(300)]
-
-all_capacity = list(range(10, 301, 10))
-
-
-execution_times = []
-memory_usage = []
-
-for n in all_capacity:
-	test_weights = all_weights[:n]
-	test_profits = all_profits[:n]
-	test_capacity = sum(test_weights) // 2
-
-	execution_times.append(measure_time(fractional_knapsack(test_weights, test_profits, test_capacity)))
-	memory_usage.append(measure_memory(fractional_knapsack(test_weights, test_profits, test_capacity)))
-
-
-print("\nItems\tAverage Time (s)\tPeak Memory (KB)")
-
-for n, t, m in zip(all_capacity, execution_times, memory_usage):
-    print(f"{n}\t{t:.8f}\t\t{m:.3f}")
-
-
-#Assignment 3 Again
-
-import matplotlib.pyplot as plt
-from time import perf_counter
-import tracemalloc
 import statistics
-
 import random
 
-def fractional_knapsack(weights, profits, capacity):
-	items = zip(weights, profits)
-	
-	ratio = []
-	
-	for item in items:
-		ration.append(item[1]/item[0])
-	
-	items = zip(ratio, items)
+def fractional_knapsack(weights, profits, capacity, show_items=False):
+    items = list(zip(weights, profits))
 
-	items.sort(reverse = True)
+    ratios = []
 
-	for ratio, item in items.items():
-		
-		weight = item[0]
-		profit = item[1]
-			
-		take = min(capacity, weight)
-		total_profit = take * (profit/weight)
-		capacity -= take
-	return total_profit
+    for item in items:
+        ratio = item[1] / item[0]
+        ratios.append(ratio)
 
+    items = list(zip(ratios, items))
+    items.sort(reverse=True)
 
-weights = [10,20,30]
-items = [60,100,120]
+    total_profit = 0
+    selected_items = []
+
+    for ratio, item in items:
+
+        weight = item[0]
+        profit = item[1]
+
+        if capacity <= 0:
+            break
+
+        take = min(weight, capacity)
+
+        total_profit += take * (profit / weight)
+
+        selected_items.append((weight, profit, take))
+
+        capacity -= take
+
+    if show_items:
+        print("\nItems selected:")
+
+        for weight, profit, take in selected_items:
+            print("Weight:", weight,
+                  "Profit:", profit,
+                  "Weight Taken:", take)
+
+    return total_profit
+
+weights = [10, 20, 30]
+profits = [60, 100, 120]
 capacity = 50
 
-print("Weight:",weight)
-print("Profit:",profit)
-print("Capacity:",capacity)
-print("Maximum Profit:",fractional_knapsack(weight, profit, capacity))
+print("Weights:", weights)
+print("Profits:", profits)
+print("Capacity:", capacity)
+print("Maximum Value:", fractional_knapsack(weights, profits, capacity, True))
 
 
 def measure_time(function, weights, profits, capacity, repeats=3):
@@ -529,123 +321,20 @@ for n in all_capacity:
         )
     )
 
-
 print("\nItems\tAverage Time (s)\tPeak Memory (KB)")
 
 for n, t, m in zip(all_capacity, execution_times, memory_usage):
     print(f"{n}\t{t:.8f}\t\t{m:.3f}")
 
+plt.plot(all_capacity, execution_times, marker='o')
+plt.title("Fractional Knapsack - Time Complexity")
+plt.grid(True)
+plt.show()
 
-
-#Assignment 3 Again
-
-import matplotlib.pyplot as plt
-from time import perf_counter
-import tracemalloc
-import statistics
-
-import random 
-
-
-def fractional_Knapsack(weights, profits, capacity):
-	
-	
-	items = zip(weights, profits)
-
-	ratio = []
-
-	for item in items:
-		ratio.append(item[1]/item[0])
-
-	items = zip(ratio, items)
-
-	items.sort(reverse=True)
-
-	for ratio, item in items:
-		
-		weight = item[0]
-		profit = item[1] 
-
-		if(capacity <= 0):
-			break
-		
-		take = min(capacity, weight)	
-		total_profit += take * (profit / weight)
-		capacity -= take		
-
-
-	return total_profit
-	
-
-
-
-weight = [10,20,30]
-profit = [60,100,120]
-capacity = 50
-
-print("Weigth:",weight)
-print("Profit:",profit)
-print("Capacity:",capacity)
-print("Total Maximum Profit:",fractional_knapsack(weight, profit, capacity))
-
-
-def measure_time(function, weights, profits, capacity, repeat = 3):
-	time = []
-	
-	for i in range(repeat):
-		start = perf_counter()
-		function(weights, profits, capacity)
-		end  = perf_counter()
-		time.append(end - start)
-
-	return statistics.median(time)
-		
-
-def mesaure_memory(function, weights, profits, capacity, repeat = 3):
-	memory_vlaues = []
-	
-	for i in range(repeat):
-		tracemalloc.start()
-
-		try:	
-			function(weights, profits, capacity)
-			current, peak = tracemalloc.get_traced_memory()
-		finally:
-			tracemalloc.stop()
-		memory_values.append(peak/1024)
-	
-	return statistics.median(memory_values)
-
-
-all_weights = [random.randint(1, 20) for i in range(300)]
-all_profits = [random.randint(10,100) for i in range(300)]
-all_capacity = list(range(10, 301, 10)) 
-
-
-execution_time = []
-memory_usage = []
-
-
-for i in all_capacity:
-
-
-	test_weights = all_weights[:n]
-	test_profits = all_profits[:n]
-	test_capacity =	sum(test_weights) // 2
-
-	
-	execution_time.append(measure_time(fractional_knapsack, test_weights, test_profits, test_capacity))
-	memory_usage.append(measure_memory(fractional_knapsack, test_weights, test_profits, test_capacity))
-
-
-
-print("\nItems\tAverage Time (s)\tPeak Memory (KB)")
-
-for n, t, m in zip(all_capacity, execution_times, memory_usage):
-    print(f"{n}\t{t:.8f}\t\t{m:.3f}")
-
-
-
+plt.plot(all_capacity, memory_usage, marker='o')
+plt.title("Fractional Knapsack - Space Complexity")
+plt.grid(True)
+plt.show()
 
 #Assigment 4
 
